@@ -17,8 +17,8 @@ is_tunnel_down() {
 # Function to send email notification
 send_email_notification() {
     # Email configuration:
-    subject="(Monitoring) IPSec tunnel offline on vpn-proxy: $1"
-    body="~ IPSec monitoring on VPN-Proxy  ~ \n Tunnel $1 is now offline, detail                                                                                                                                                             s:  \n\n  $(ipsec status | grep "$1" | grep "unrouted")"
+    subject="(Monitoring) IPSec tunnel offline on $(hostname): $1"
+    body="~ IPSec monitoring on $(hostname)  ~ \n Tunnel $1 is now offline, detail                                                                                                                                                             s:  \n\n  $(ipsec status | grep "$1" | grep "unrouted")"
 
     echo -e "$body" | mail -s "$subject" "$email_recipient"
 }
@@ -31,9 +31,9 @@ is_tunnel_down "$1"
 current_status=$?
 
 # Send email notification if tunnel goes down for the first time
-if [ $current_status -eq 0 ] && [ "$previous_status" != "offline" ]; then
-    echo "Tunnel $1 is offline for the first time. Sending email to $email_recip                                                                                                                                                             ient"
+if [ $current_status -eq 0 ] && [ "$previous_status" != "offline" ]; then                                                                                                                                                            ient"
     send_email_notification "$1"
+    echo "Tunnel $1 is now offline, mail sent to  $email_recipient" 
 else
     echo "Tunnel $1 is online"
 fi
