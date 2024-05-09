@@ -5,16 +5,24 @@ The script looks for the 'unrouted' indicator in the output of the 'ipsec status
 
 ## Setup using crontab:
 
-Assuming repo is cloned to /opt/ipsec-monitoring, the following crontabs may be installed:
+Assuming repo is cloned to /opt/ipsec-monitoring, the scripts can be executed as follows:
 
-Example #1:
-```
-*/1 * * * *     /opt/ipsec-monitoring/monitor-all-tunnels.sh >> /var/log/ipsec-monitoring.log
-```
+### All VPN tunnels:
 
-Example #2:
+Usage: `/opt/ipsec-monitoring/monitor-all-tunnel.sh *MAIL ADDRESS*`
+
+Crontab:
 ```
-*/1 * * * *     /opt/ipsec-monitoring/monitor-tunnel.sh CUSTOMER-1 >> /var/log/ipsec-monitoring.log
+*/1 * * * *     /opt/ipsec-monitoring/monitor-all-tunnels.sh warning-recipient@mycompany.org >> /var/log/ipsec-monitoring.log
+```
+### A specific VPN tunnel
+
+
+Usage: `/opt/ipsec-monitoring/monitor-tunnel.sh *TUNNEL NAME* *MAIL ADDRESS*`
+
+Crontab:
+```
+*/1 * * * *     /opt/ipsec-monitoring/monitor-tunnel.sh CUSTOMER-1 warning-recipient@mycompany.org >> /var/log/ipsec-monitoring.log
 ```
 
 ## Logging
