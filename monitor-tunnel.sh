@@ -1,6 +1,6 @@
 #!/bin/bash
 
-email_recipient="test@test.org"
+email_recipient="$2"
 
 # File to store the previous tunnel status
 status_file="/opt/ipsec-monitoring/tunnelstatus/$1.txt"
