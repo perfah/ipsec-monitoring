@@ -25,6 +25,12 @@ Crontab:
 */1 * * * *     /opt/ipsec-monitoring/monitor-tunnel.sh CUSTOMER-1 warning-recipient@mycompany.org >> /var/log/ipsec-monitoring.log
 ```
 
+### Additional considerations
+```
+chmod +x /opt/ipsec-monitoring/monitor-all-tunnels.sh
+chmod +x /opt/ipsec-monitoring/monitor-tunnel.sh
+```
+
 ## Logging
 
 Log file /var/log/ipsec-monitoring.log could look like this:
