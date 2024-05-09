@@ -9,7 +9,7 @@ Assuming repo is cloned to /opt/ipsec-monitoring, the scripts can be executed as
 
 ### All VPN tunnels:
 
-Usage: `/opt/ipsec-monitoring/monitor-all-tunnel.sh *MAIL ADDRESS*`
+Usage: `/opt/ipsec-monitoring/monitor-all-tunnels.sh *MAIL ADDRESS*`
 
 Crontab:
 ```
