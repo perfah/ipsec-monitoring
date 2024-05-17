@@ -53,7 +53,7 @@ I highly recommend log rotation.
 Subject: 
 
 ```
-(Monitoring) IPSec tunnel offline on *host*: CUSTOMER-3
+(Monitoring) IPSec tunnel down on *host*: CUSTOMER-3
 ```
 
 Body:
