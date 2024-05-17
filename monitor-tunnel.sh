@@ -17,8 +17,8 @@ is_tunnel_down() {
 # Function to send email notification
 send_email_notification() {
     # Email configuration:
-    subject="(Monitoring) IPSec tunnel offline on $(hostname): $1"
-    body="~ IPSec monitoring on $(hostname)  ~ \n Tunnel $1 is now offline, detail                                                                                                                                                             s:  \n\n  $(ipsec status | grep "$1" | grep "unrouted")"
+    subject="(Monitoring) IPSec tunnel $2 on $(hostname): $1"
+    body="~ IPSec monitoring on $(hostname)  ~ \n Tunnel $1 is now $2, detail                                                                                                                                                             s:  \n\n  $(ipsec status | grep "$1" | grep "unrouted")"
 
     echo -e "$body" | mail -s "$subject" "$email_recipient"
 }
@@ -31,16 +31,21 @@ is_tunnel_down "$1"
 current_status=$?
 
 # Send email notification if tunnel goes down for the first time
-if [ $current_status -eq 0 ] && [ "$previous_status" != "offline" ]; then                                                                                                                                                            ient"
-    send_email_notification "$1"
-    echo "Tunnel $1 is now offline, mail sent to  $email_recipient" 
-else
-    echo "Tunnel $1 is online"
+if [ $current_status -eq 0 ] && [ "$previous_status" != "down" ]; then
+    echo "Tunnel $1 is now down. Sending email to $email_recipient"
+    send_email_notification "$1" "down"
+elif [ $current_status -ne 0 ] && [ "$previous_status" == "down" ]; then
+    echo "Tunnel $1 is now up. Sending email to $email_recipient"
+    send_online_notification "$1" "up"
+elif [ $current_status -eq 0 ]; then
+    echo "Tunnel $1 status is still down"
+elif [ $current_status -ne 0 ]; then
+    echo "Tunnel $1 status is still up"
 fi
 
 # Update previous status in file
 if [ $current_status -eq 0 ]; then
-    echo "offline" > "$status_file"
+    echo "down" > "$status_file"
 else
-    echo "online" > "$status_file"
+    echo "up" > "$status_file"
 fi
