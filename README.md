@@ -37,14 +37,14 @@ Log file /var/log/ipsec-monitoring.log could look like this:
 
 ```
 ** Monitoring check of all tunnels at Thu May  9 12:31:01 UTC 2024
-Tunnel CUSTOMER-1 is online
-Tunnel CUSTOMER-2 is online
-Tunnel CUSTOMER-3 is now offline, mail sent to *email_recipient*
+Tunnel CUSTOMER-1 is still up
+Tunnel CUSTOMER-2 is still up
+Tunnel CUSTOMER-3 is now down, mail sent to *email_recipient*
 
 ** Monitoring check of all tunnels at Thu May  9 12:32:01 UTC 2024
-Tunnel CUSTOMER-1 is online
-Tunnel CUSTOMER-2 is online
-Tunnel CUSTOMER-3 is online
+Tunnel CUSTOMER-1 is still up
+Tunnel CUSTOMER-2 is still up
+Tunnel CUSTOMER-3 is now up, mail sent to *email_recipient*
 ```
 
 I highly recommend log rotation.
