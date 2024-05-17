@@ -59,6 +59,6 @@ Subject:
 Body:
 ```
 ~ IPSec monitoring on *host*  ~
- The following tunnel is offline:
+ The following tunnel is down:
 000 "CUSTOMER-3": *left ip*...%any[@customer-3]===*right ip*; unrouted; eroute owner: #0
 ```
